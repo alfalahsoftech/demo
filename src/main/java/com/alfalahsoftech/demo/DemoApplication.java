@@ -90,8 +90,3 @@ public class Application {
 }
 
  */
-
-class Bean{
-
-
-}
