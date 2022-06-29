@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@Configuration
+//@Configuration
 public class UserController {
 	
-	@GetMapping(path="/userList")
+	@GetMapping("/userList")
 	public java.util.List<String> userList() {
 		System.out.println("Demo : User List");
 		 System.out.println("this::"+this);

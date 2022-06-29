@@ -3,6 +3,8 @@ package com.alfalahsoftech.jdk8;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
 import com.alfalahsoftech.demo.TopicController;
 import com.alfalahsoftech.demo.Topics;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -42,6 +44,11 @@ public class UserServiceImpl implements IUserService, ICrudService {
 		IUserService.getTimeZone("US");
 		ICrudService iSrvc= new UserServiceImpl();
 		iSrvc.crateTopics();
+	}
+	
+	@ExceptionHandler(Exception.class)
+	public void defaultExcepHandler() {
+		
 	}
 
 	

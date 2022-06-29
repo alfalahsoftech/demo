@@ -1,11 +1,19 @@
 package com.alfalahsoftech.jdk8;
 
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.PriorityQueue;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class BasiJavaTest {
 
 	public static void main(String[] args) {
+		duplicate();
+		System.out.println("Dplicates are: " + findDuplicates(Arrays.asList(1,2,1,3,4,5,2)));
+		revStr("samdani");
 		String x ="null";
 		testCode(x);
 		System.out.println(x);
@@ -14,11 +22,53 @@ public class BasiJavaTest {
 
 		fillArray();
 	}
+	public static String revStr(String valueStr){
+		  int len = valueStr.length();
+		  if(valueStr == null || len == 0) {
+			return valueStr;
+		  }
+		  String reversedValue = "";
+		  for(int i = len-1; i >= 0; i--){
+		     reversedValue += valueStr.charAt(i);
+		  }
+		  System.out.println(String.format("reversedValue =>%s", reversedValue));
+		  return reversedValue;
+		}
+	
+	private static <T> Set<T> findDuplicates(Collection<T> collection) {
+	    Set<T> uniques = new HashSet<>();
+	    return collection.stream()
+	        .filter(e -> !uniques.add(e))
+	        .collect(Collectors.toSet());
+	}
 
+	public static void duplicate() {
+		int[] nums =  new int[] {3, 6, 2, 1, 8, 2, 8, 2};
+		//Arrays.sort(nums);
+		
+		for(int i = 0; i<nums.length;i++) {
+			
+			for (int j = 0; j < nums.length - 1; j++) {
+				if( nums[j] < nums[j+1]) {
+					int temp = nums[j];
+					nums[j] = nums[j+1];
+					nums[j+1] = temp;
+				}
+			}
+		}
+		
+		System.out.println("list: " );
+		IntStream.of(nums).forEach((e)->System.out.println(e));
+		
+		for (int i = 0; i < nums.length-1; i++) {
 
-	/**
-	 * 
-	 */
+		    if (nums[i] == nums[i+1]) {
+		        System.out.println("duplicate item "+nums[i+1]+" at Location "+(i+1) );
+		    }
+
+		}
+	}
+	
 	public static void fillArray() {
 		System.out.println("1 << 4; ==> "+ (1 << 4)); //16 HashMap initial capacity
 		int ar[] = new int[5];
